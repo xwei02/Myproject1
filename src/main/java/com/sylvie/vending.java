@@ -8,28 +8,25 @@ public class vending {
         int total = 0;
         boolean end = false;
         while (!end) {
-            System.out.println("Please put your coin 1/5/10: Total: "+total);
+            System.out.println("Please put your coin 1/5/10: Total: " + total);
             String s = scanner.next();
-            int num = Integer.parseInt(s);
-            switch (num) {
-                case 1:
-                    System.out.println("1");
-                    total = total + num;
-                    break;
-                case 0:
-                    System.out.println("0");
-                    end = true;
-                    break;
-                case 5:
-                    System.out.println("5");
-                    total = total + num;
-                    break;
-                case 10 :
-                    System.out.println("10");
-                    total = total + num;
-                    break;
-                default:
-                    break;
+            try {
+                int num = Integer.parseInt(s);
+                switch (num) {
+                    case 1:
+                    case 5:
+                    case 10:
+                        total = total + num;
+                        break;
+                    case 0:
+                        System.out.println("0");
+                        end = true;
+                        break;
+                    default:
+                        break;
+                }
+            }catch (NumberFormatException e){
+            System.out.println("ah!");
             }
         }
     }
